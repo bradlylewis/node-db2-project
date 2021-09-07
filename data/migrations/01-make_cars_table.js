@@ -5,12 +5,13 @@ exports.up = async function (knex) {
     table.string('vin', 17).unique().notNullable()
     table.string('make', 128).notNullable()
     table.string('model', 128).notNullable()
-    table.numeric('mileage').notNullable()
-    table.string('title')
-    table.string('transmission')
+    table.integer('mileage').notNullable()
+    table.string('title', 128)
+    table.string('transmission', 128)
   })
 };
 
-exports.down = function (knex) {
+exports.down = async function (knex) {
   // DO YOUR MAGIC
+  await knex.schema.dropTableIfExists('cars')
 };
