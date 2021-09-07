@@ -26,13 +26,13 @@ router.get('/:id', checkCarId, async (req, res, next) => {
 router.post('/', 
 checkCarPayload,
 checkVinNumberValid,
-checkVinNumberUnique, async (req, res, next) => {
-    // try {
-        res.json(`posting new car`)
-
-    // } catch (err) {
-    //     next(err)
-    // }
+ async (req, res, next) => {
+    try {
+        const car = await Car.create(req.body)
+        res.json(car)
+    } catch (err) {
+        next(err)
+    }
 });
 
 module.exports = router;

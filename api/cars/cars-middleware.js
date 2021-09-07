@@ -37,15 +37,11 @@ const checkVinNumberValid = (req, res, next) => {
   } else {
     next({ status: 400, message: `vin ${req.body.vin} is invalid` 
   })
+  }
 }
 
 const checkVinNumberUnique = (req, res, next) => {
   // DO YOUR MAGIC
 }
 
-module.exports = { 
-  checkCarId,
-  checkCarPayload,
-  checkVinNumberValid,
-  checkVinNumberUnique
-}
+module.exports = { checkCarId, checkCarPayload, checkVinNumberValid, checkVinNumberUnique, }
